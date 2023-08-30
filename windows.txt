@@ -1,0 +1,1 @@
+计算文件md5 ：    certutil.exe -hashfile .\myvpn.cap md5

@@ -1,0 +1,7 @@
+教程：https://www.secrss.com/articles/8829
+
+<file>
+快捷键：
+搜索（Ctrl+SHIFT+E）
+右键查看引用
+</file>

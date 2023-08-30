@@ -1,0 +1,59 @@
+==== 第一个wiki ====
+
+
+https://tailscale.com/
+
+
+
+安装wireguard
+<file>
+sudo apt-get install wireguard
+</file>
+
+开启ipv4流量转发
+<file>
+vim /etc/sysctl.conf
+net.ipv4.ip_forward = 1
+sysctl -p
+</file>
+
+生成服务器和客户端密钥对：
+<file>
+wg genkey | tee server_privatekey | wg pubkey > server_publickey
+wg genkey | tee client_privatekey | wg pubkey > client_publickey
+</file>
+
+生成的配置文件路径：
+<file>
+echo "
+[Interface]
+PrivateKey = uNjwSbw2/zKUigjxNc0zr+aBohZMT5nKFzztKofDIlU= # 填写本机的privatekey 内容
+Address = 10.0.8.1/24
+PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+ListenPort = 50814 # 注意该端口是UDP端口
+DNS = 8.8.8.8
+MTU = 1420
+[Peer]
+PublicKey =  lGdSx/RI36XAoYszjH5KJYOaImcxuPubT0acaQgzWD0=  # 填写对端的publickey 内容
+AllowedIPs = 10.0.8.10/24 " > /etc/wireguard/wg0.conf
+</file>
+
+设置开机启动：
+systemctl enable wg-quick@wg0
+
+生成的配置文件路径：
+<file>
+echo "
+[Interface]
+  PrivateKey = GP4IncjXyJ4RF0K9OUidPT6k2gIVhG7KuDPkgBO72Wk=  # 填写本机的privatekey 内容
+  Address = 10.0.8.10/24
+  DNS = 8.8.8.8
+  MTU = 1420
+
+[Peer]
+  PublicKey = V1/xPgqzcvqRg48dvhfKt8DL7R3woTZljYNUikpfEgg=  # 填写对端的publickey 内容
+  Endpoint = 176.119.148.187:50814
+  AllowedIPs = 0.0.0.0/0, ::0/0
+  PersistentKeepalive = 25" > /etc/wireguard/client.conf
+</file>

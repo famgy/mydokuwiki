@@ -1,0 +1,36 @@
+查看进程名：frida-ps -U
+----
+附加启动 js 文件：frida -U -l .\toast_tracer.js -f cn.wps.moffice_eng
+----
+
+===addview_trace.js===
+<file>
+Java.perform(function () {
+	const Log = Java.use('android.util.Log');
+	const ViewGroup = Java.use('android.view.ViewGroup');
+	
+	const addView = ViewGroup.addView;
+	
+    var Exception = Java.use("java.lang.Exception");
+	
+	
+    // 钩取第一个重载
+    ViewGroup.addView.overload('android.view.View').implementation = function(view) {
+        console.log('addView() called with View');
+		console.log(stackTraceHere());
+        return this.addView(view);
+    };
+
+    // 钩取第二个重载
+    ViewGroup.addView.overload('android.view.View', 'int').implementation = function(view, index) {
+        console.log('addView() called with View and index');
+		console.log(stackTraceHere());
+        return this.addView(view, index);
+    };
+
+	
+    function stackTraceHere() {
+        return Log.getStackTraceString(Exception.$new());
+    }
+});
+</file>

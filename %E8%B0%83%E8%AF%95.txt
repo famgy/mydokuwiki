@@ -1,0 +1,39 @@
+<file>
+调试启动应用
+adb shell am start -D -n com.msp.appmonitor/com.msp.appmonitor.MainActivity
+adb shell am start -D -n com.msmsdk.test/com.msmsdk.test.MainActivity
+adb shell am start -D -n com.famgy.snake/com.famgy.snake.MainActivity
+</file>
+
+<file>
+安装模块“MagiskHide Props Config” 执行下面的命令
+
+adb shell
+su
+magisk resetprop ro.debuggable 1
+stop;start;
+</file>
+
+<file>
+dd命令读取进程内容
+
+cat maps
+dd if=/proc/19899/mem of=/data/local/tmp/test1 skip=0xa93e8000
+</file>
+
+<file>
+gdb调试android native程序 （参考： https://www.pianshen.com/article/49771912727/）
+
+gdbserver  :   Sdk\ndk\23.1.7779620\prebuilt\android-arm64\gdbserver
+gdbclient  :   Sdk\ndk\23.1.7779620\prebuilt\windows-x86_64\bin\gdb.exe
+
+echo 0 > /sys/fs/selinux/enforce
+adb forward tcp:1234 tcp:1234
+
+./gdbserver :1234 --attach 20807
+
+gdb
+target remote localhost:1234
+
+
+</file>

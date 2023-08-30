@@ -1,0 +1,8 @@
+<file>
+adb shell dumpsys window | findstr mCurrentFocus
+
+adb shell pm list packages
+adb shell pm path <包名>
+adb pull /data/app/com.tencent.mm-4anM2-ziMWmgLH-jFtnIbw==/base.apk 
+
+</file>

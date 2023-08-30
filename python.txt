@@ -1,0 +1,17 @@
+===环境===
+
+  -anaconda安装：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D
+  -anaconda命令:
+<file>
+切换32位环境：set CONDA_FORCE_32BIT=1
+创建环境： conda create --name tensorflow_env python=3.11 --channel https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+切换环境： conda activate paddle_env
+退出环境： conda deactivate
+删除环境： conda env remove --name tensorflow_env
+查看已安装的所有环境： conda env list
+查看当前激活的Python环境中已安装的包：conda list
+搜索可用软件包：conda search cudnn -c conda-forge
+当前环境：conda info
+安装包：conda install pywin32
+
+</file>

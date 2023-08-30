@@ -1,0 +1,16 @@
+<file>
+
+
+1. static 修饰的成员变量和方法，从属于类。(修改 变量和方法 后，所有对象立即生效)
+2. 普通变量和方法从属于对象。
+3. 静态块，形式为“static{...}”，静态块里的内容在类被加载的时候就执行
+
+</file>
+
+<file>
+NIO(网络高性能并发处理) :  https://www.cnblogs.com/mikechenshare/p/16587635.html
+
+mmap直接将用户进程私有地址空间中的一块区域与文件对象建立映射关系，MappedByteBuffer、RocketMQ也使用该技术
+
+</file>
+

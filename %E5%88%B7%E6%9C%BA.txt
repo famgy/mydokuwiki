@@ -1,0 +1,25 @@
+ 镜像官网下载：https://developers.google.com/android/images?hl=zh-cn 
+
+
+==== pixel5 ====
+
+<file>
+
+1. 解压android系统镜像，获得 boot.img
+
+
+2. magisk下载：https://magiskmanager.com/ 
+
+3. adb install Magisk-v26.1.apk
+
+
+4. Open Magisk Manager and go to Install > Install > Select and Patch a file，获得 magisk_patched-26100_pZeaK.img
+
+5. 将 magisk_patched-26100_pZeaK.img 拷贝到电脑，准备 root
+
+6. adb reboot bootloader
+
+7. fastboot flash boot .\magisk_patched-26100_pZeaK.img
+
+
+</file>

@@ -1,0 +1,72 @@
+==机器学习==
+
+  -图像获取：截图工具
+  -图像分析：图像识别
+  -文字提取：OCR工具或库：Tesseract、pytesseract
+    -图像预处理：调整图像的亮度、对比度，去除噪点或者进行图像增强，提高文字识别的准确性
+    -将截图图像传入OCR引擎进行文字识别、提取
+    -文本进行后处理，例如去除多余的空格、修正识别错误等
+  -输入操作：鼠标点击
+  -状态识别：状态匹配
+  -作弊对抗：随机数据
+
+===自动玩游戏===
+  -自动化游戏1：https://github.com/SerpentAI/SerpentAI
+  -自动化游戏2：https://github.com/Farama-Foundation/Gymnasium
+  -入门教程1：https://juejin.cn/post/7146037552493887524
+  -入门教程2：https://www.zhihu.com/question/464950657
+<file>
+1. 深度学习框架：
+	Tensorflow、Keras、PyTorch
+	
+	
+2. 模型搭建：
+	cnn（处理图片的神经网络模型）：ResNet18,其他的也行
+
+
+3. 强化学习
+	gym：https://github.com/Farama-Foundation/Gymnasium
+</file>
+
+===Ml-Kit===
+  -官方教程：https://developers.google.com/ml-kit/vision/text-recognition/v2/android?hl=zh-cn#java
+
+===keras-ocr===
+  -专业ocr开源库：https://github.com/faustomorales/keras-ocr
+
+===Tensorflow===
+  -官方实例：https://github.com/tensorflow/examples/tree/master/lite/examples/optical_character_recognition/android
+  -环境教程：https://blog.csdn.net/weixin_45747396/article/details/121598615
+  -使用教程：https://my.oschina.net/u/876354/blog/1926060
+  -文本检测：https://blog.csdn.net/linchuhai/article/details/84191406
+  -文本检测（优化）：https://blog.csdn.net/linchuhai/article/details/84677249
+  -文字识别：https://blog.csdn.net/linchuhai/article/details/84939594
+<file>
+1. 图和会话：使用图 (graph) 来表示计算任务，使用会话 (Session) 来执行图。
+2. 损失函数: 训练结果和正确结果的差异度，值越小越好。以此来不断训练，优化训练模型。
+3. 激励函数：实现张量计算的非线性化
+</file>
+
+===PaddleOCR===
+  -环境教程：https://blog.csdn.net/u014125025/article/details/128697337
+  -下载程序：https://github.com/PaddlePaddle/PaddleOCR
+  -安装环境：https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/install/conda/windows-conda.html
+
+
+
+===tesseract===
+  -下载程序：https://github.com/tesseract-ocr/tesseract
+  -下载训练的语言库：https://github.com/tesseract-ocr/tessdata
+  -将语言库文件替换到：C:\Program Files\Tesseract-OCR\tessdata\chi_sim.traineddata
+
+<file>
+PS C:\Users\DeeR\Downloads> tesseract --list-langs
+List of available languages in "C:\Program Files\Tesseract-OCR/tessdata/" (3):
+chi_sim
+eng
+osd
+
+将结果保存到output.txt文件：tesseract.exe .\test.png output -l chi_sim
+
+可以直接输出在终端屏幕：tesseract.exe .\test.png stdout -l chi_sim
+</file>
